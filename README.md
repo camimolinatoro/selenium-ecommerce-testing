@@ -1,56 +1,68 @@
-﻿# 🧪 E-commerce Test Automation Framework
+﻿# E-commerce Test Automation Framework
 
-Framework de automatización de pruebas end-to-end para un sitio de e-commerce, construido con Selenium, Python y Pytest, siguiendo el patrón Page Object Model (POM).
+End-to-end test automation framework for an e-commerce site, built with Selenium, Python, and Pytest, following the Page Object Model (POM) pattern.
 
-## Qué prueba (11 casos)
+## What it tests (11 cases)
 
-- Login exitoso con credenciales válidas
-- Login fallido con credenciales incorrectas
-- Login con usuario bloqueado (locked_out_user)
-- Login con campos vacíos
-- Agregar múltiples productos al carrito
-- Remover producto del carrito
-- Ordenar productos por precio
-- Flujo completo de compra (login → carrito → checkout → confirmación)
-- Checkout con campos vacíos (validación de errores)
-- Cancelar checkout y regresar al carrito
-- Logout exitoso
+- Successful login with valid credentials
+- Failed login with incorrect credentials
+- Login with a locked-out user
+- Login with empty fields
+- Adding multiple products to the cart
+- Removing a product from the cart
+- Sorting products by price
+- Full checkout flow (login, cart, checkout, confirmation)
+- Checkout with empty fields (error validation)
+- Canceling checkout and returning to the cart
+- Successful logout
 
-## Stack técnico
+## Tech stack
 
 - Python 3.12
 - Selenium WebDriver
-- Pytest + pytest-rerunfailures (reintentos automáticos ante fallos intermitentes de red)
+- Pytest + pytest-rerunfailures (automatic retries for intermittent network failures)
+- Allure Report (interactive visual reports)
 - Page Object Model (POM)
-- WebDriverWait / Expected Conditions (esperas explícitas para tests robustos)
-- webdriver-manager (gestión automática del driver de Chrome)
-- Captura automática de screenshots ante fallos, para depuración
+- WebDriverWait / Expected Conditions (explicit waits for robust tests)
+- webdriver-manager (automatic Chrome driver management)
+- Automatic screenshot capture on failure, for debugging
 
-## Estructura del proyecto
+## Visual reports with Allure
 
-\```
-selenium-ecommerce-testing/
-├── pages/          # Page Objects (login, inventario, carrito, checkout)
-├── tests/          # Casos de prueba + configuración de pytest
-├── reports/        # Screenshots automáticos ante fallos
-├── requirements.txt
-└── README.md
-\```
+The project generates interactive reports with Allure Report, showing pass rate, test duration, and step-by-step details.
 
-## Cómo correrlo
+![Allure Report](allure-report.png)
 
-\```bash
-python -m venv venv
-venv\Scripts\Activate.ps1   # Windows
-pip install -r requirements.txt
-pytest tests/ -v --reruns 2 --reruns-delay 2
-\```
+To generate it:
 
-## Resultado
+- pytest tests/
+- allure serve allure-results
 
-11/11 tests pasando, cubriendo el flujo crítico de e-commerce (autenticación, gestión de carrito, checkout y logout), con reintentos automáticos para manejar fallos intermitentes propios de pruebas end-to-end contra sitios reales.
+## Project structure
 
-## Autora
+- pages: Page Objects (login, inventory, cart, checkout)
+- tests: Test cases and pytest configuration
+- reports: Automatic screenshots on failure
+- allure-report.png: visual report screenshot
+- requirements.txt
+- pytest.ini
+- README.md
 
-Camila Molina Toro — Estudiante de Ingeniería de Sistemas (UPB), enfocada en QA y desarrollo de software.
-[LinkedIn](tu-link) · [GitHub](tu-link)
+## How to run it
+
+- python -m venv venv
+- venv\Scripts\Activate.ps1
+- pip install -r requirements.txt
+- pytest tests/ -v --reruns 2 --reruns-delay 2
+
+## Result
+
+11/11 tests passing, covering the critical e-commerce flow (authentication, cart management, checkout, and logout), with automatic retries to handle intermittent failures typical of end-to-end tests against real sites, and visual reports generated with Allure.
+
+## Author
+
+Camila Molina Toro, Systems Engineering student (UPB), focused on QA and software development.
+
+LinkedIn: https://www.linkedin.com/in/camilamolinatoro
+
+GitHub: https://github.com/camimolinatoro
